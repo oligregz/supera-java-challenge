@@ -52,6 +52,10 @@ public class ClientModel implements Serializable {
     return name;
   }
 
+  public String getPassword() {
+    return password;
+  }
+
   public void setName(String name) {
     this.name = name;
   }
