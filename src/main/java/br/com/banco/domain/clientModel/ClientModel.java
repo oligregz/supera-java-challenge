@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -28,6 +30,8 @@ public class ClientModel implements Serializable {
 
   private String telephone;
 
+  @OneToOne
+  @JoinColumn(name = "account_id")
   private AccountModel account;
 
   public ClientModel() {}
