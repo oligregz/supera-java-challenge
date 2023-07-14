@@ -23,44 +23,44 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/clients")
 public class ClientController {
 
-    private final ClientService clientService;
+  private final ClientService clientService;
 
-    @Autowired
-    public ClientController(ClientService clientService) {
-      this.clientService = clientService;
-    }
+  @Autowired
+  public ClientController(ClientService clientService) {
+    this.clientService = clientService;
+  }
 
-    @GetMapping
-    public ResponseEntity<List<ClientModel>> getAllClients() {
-      List<ClientModel> clients = clientService.getAllClients();
-      return ResponseEntity.ok(clients);
-    }
+  @GetMapping
+  public ResponseEntity<List<ClientModel>> getAllClients() {
+    List<ClientModel> clients = clientService.getAllClients();
+    return ResponseEntity.ok(clients);
+  }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ClientModel> getClientById(@PathVariable UUID id) {
-      Optional<ClientModel> client = clientService.getClientById(id);
-      return client.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
-    }
+  @GetMapping("/{id}")
+  public ResponseEntity<ClientModel> getClientById(@PathVariable UUID id) {
+    Optional<ClientModel> client = clientService.getClientById(id);
+    return client.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+  }
 
-    @PostMapping
-    public ResponseEntity<ClientModel> createClient(@RequestBody ClientModel client) {
-      ClientModel createdClient = clientService.createClient(client);
-      return ResponseEntity.status(HttpStatus.CREATED).body(createdClient);
-    }
+  @PostMapping
+  public ResponseEntity<ClientModel> createClient(@RequestBody ClientModel client) {
+    ClientModel createdClient = clientService.createClient(client);
+    return ResponseEntity.status(HttpStatus.CREATED).body(createdClient);
+  }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ClientModel> updateClient(@PathVariable UUID id, @RequestBody ClientModel clientDetails) {
-        ClientModel updatedClient = clientService.updateClient(id, clientDetails);
-        if (updatedClient != null) {
-          return ResponseEntity.ok(updatedClient);
-        } else {
-          return ResponseEntity.notFound().build();
-        }
+  @PutMapping("/{id}")
+  public ResponseEntity<ClientModel> updateClient(@PathVariable UUID id, @RequestBody ClientModel clientDetails) {
+    ClientModel updatedClient = clientService.updateClient(id, clientDetails);
+    if (updatedClient != null) {
+      return ResponseEntity.ok(updatedClient);
+    } else {
+      return ResponseEntity.notFound().build();
     }
+  }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteClient(@PathVariable UUID id) {
-      clientService.deleteClient(id);
-      return ResponseEntity.noContent().build();
-    }
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> deleteClient(@PathVariable UUID id) {
+    clientService.deleteClient(id);
+    return ResponseEntity.noContent().build();
+  }
 }

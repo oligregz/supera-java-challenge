@@ -1,6 +1,7 @@
 package br.com.banco.domain.transaction;
 
 import br.com.banco.domain.accountModel.AccountModel;
+import br.com.banco.domain.transaction.types.TransactionType;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -13,8 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
+
 @Entity
-@Table(name = "account_tb")
+@Table(name = "transaction_tb")
 public class TransactionModel implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -26,6 +28,9 @@ public class TransactionModel implements Serializable {
   private double value;
 
   private LocalDateTime moment;
+
+  private TransactionType type;
+
 
   @ManyToOne
   @JoinColumn(name = "account_id")
@@ -56,6 +61,14 @@ public class TransactionModel implements Serializable {
 
   public void setMoment(LocalDateTime moment) {
     this.moment = moment;
+  }
+
+  public TransactionType getType() {
+    return type;
+  }
+
+  public void setTransactionType(TransactionType type) {
+    this.type = type;
   }
 
   public AccountModel getAccount() {
