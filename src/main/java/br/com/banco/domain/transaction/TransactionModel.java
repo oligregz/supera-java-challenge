@@ -1,4 +1,4 @@
-package br.com.banco.domain.transactions;
+package br.com.banco.domain.transaction;
 
 import br.com.banco.domain.accountModel.AccountModel;
 import java.io.Serializable;
@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "account_tb")
-public class TransactionsModel implements Serializable {
+public class TransactionModel implements Serializable {
 
   private static final long serialVersionUID = 1L;
   
@@ -31,9 +31,9 @@ public class TransactionsModel implements Serializable {
   @JoinColumn(name = "account_id")
   private AccountModel account;
 
-  public TransactionsModel() {}
+  public TransactionModel() {}
   
-  public TransactionsModel(double value, LocalDateTime moment) {
+  public TransactionModel(double value, LocalDateTime moment) {
     this.value = value;
     this.moment = moment;
   }

@@ -1,7 +1,7 @@
 package br.com.banco.domain.accountModel;
 
 import br.com.banco.domain.clientModel.ClientModel;
-import br.com.banco.domain.transactions.TransactionsModel;
+import br.com.banco.domain.transaction.TransactionModel;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 
 
@@ -37,7 +38,7 @@ public class AccountModel implements Serializable {
   private ClientModel holder;
   
   @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-  private ArrayList<TransactionsModel> transactions;
+  private ArrayList<TransactionModel> transactions;
 
   public AccountModel() {}
   
@@ -76,11 +77,11 @@ public class AccountModel implements Serializable {
     this.holder = holder;
   }
   
-  public ArrayList<TransactionsModel> getTransactions() {
+  public ArrayList<TransactionModel> getTransactions() {
     return transactions;
   }
   
-  public void setTransactions(ArrayList<TransactionsModel> transactions) {
+  public void setTransactions(ArrayList<TransactionModel> transactions) {
     this.transactions = transactions;
   }
 }
