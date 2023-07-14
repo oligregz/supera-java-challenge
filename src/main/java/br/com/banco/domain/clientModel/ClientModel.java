@@ -44,10 +44,6 @@ public class ClientModel implements Serializable {
     this.telephone = telephone;
   }
 
-  public static long getSerialversionuid() {
-    return serialVersionUID;
-  }
-
   public UUID getId() {
     return id;
   }

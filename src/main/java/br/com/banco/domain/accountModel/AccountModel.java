@@ -1,15 +1,21 @@
 package br.com.banco.domain.accountModel;
 
 import br.com.banco.domain.clientModel.ClientModel;
+import br.com.banco.domain.transactions.TransactionsModel;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.UUID;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 
 @Entity
@@ -30,8 +36,9 @@ public class AccountModel implements Serializable {
   @JoinColumn(name = "client_id")
   private ClientModel holder;
   
-  // private Transactions transactions;
-  
+  @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  private ArrayList<TransactionsModel> transactions;
+
   public AccountModel() {}
   
   public AccountModel(Long number, Double amount, ClientModel holder) {
@@ -40,11 +47,7 @@ public class AccountModel implements Serializable {
     this.amount = amount;
     this.holder = holder;
   }
-
-  public static long getSerialversionuid() {
-    return serialVersionUID;
-  }
-
+  
   public UUID getId() {
     return id;
   }
@@ -52,24 +55,32 @@ public class AccountModel implements Serializable {
   public Long getNumber() {
     return number;
   }
-
+  
   public void setNumber(Long number) {
     this.number = number;
   }
-
+  
   public Double getAmount() {
     return amount;
   }
-
+  
   public void setAmount(Double amount) {
     this.amount = amount;
   }
-
+  
   public ClientModel getHolder() {
     return holder;
   }
-
+  
   public void setHolder(ClientModel holder) {
     this.holder = holder;
+  }
+  
+  public ArrayList<TransactionsModel> getTransactions() {
+    return transactions;
+  }
+  
+  public void setTransactions(ArrayList<TransactionsModel> transactions) {
+    this.transactions = transactions;
   }
 }
