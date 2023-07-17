@@ -1,3 +1,8 @@
+-- Line added for challenged
+-------------------------------------
+CREATE DTABASE IF NOT EXISTS `bank`;
+-------------------------------------
+
 CREATE TABLE conta
 (
     id_conta IDENTITY NOT NULL PRIMARY KEY,
