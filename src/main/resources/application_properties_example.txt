@@ -1,7 +1,7 @@
 spring.datasource.url=jdbc:mysql://localhost:3306/supera-bank?createDatabaseIfNotExist=true
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.datasource.username=root
-spring.datasource.password=Greg88222046..
+spring.datasource.password=rootkey
 spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
 spring.jpa.hibernate.ddl-auto=create
 server.port=3921
