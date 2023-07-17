@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ContaController {
   
   private final ContaService contaService;
-  ErrorMessage errorMessage = new ErrorMessage();
+  ErrorMessage erro = new ErrorMessage();
 
   @Autowired
   public ContaController(ContaService contaService) {
@@ -29,27 +29,27 @@ public class ContaController {
   }
 
   @PostMapping
-  public ResponseEntity<?> criarConta(@RequestBody ContaModel conta) {
+  public ResponseEntity<ContaModel> criarConta(@RequestBody ContaModel conta) {
     try {
       ContaModel novaConta = contaService.criarConta(conta);
       return new ResponseEntity<>(novaConta, HttpStatus.CREATED);
     } catch (Exception e) {
-      errorMessage.setMessage(e.getMessage());
-      return new ResponseEntity<>(errorMessage.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+      erro.setMessage(e.getMessage());
+      throw new GeneralException(erro.getMessage());
     }
   }
 
   @GetMapping
-  public ResponseEntity<?> listarContas() {
+  public ResponseEntity<List<ContaModel>> listarContas() {
     try {
       List<ContaModel> contas = contaService.listarContas();
       if (contas.isEmpty()) {
-        throw new GeneralException("Client not found");
+        throw new GeneralException("Accounts not found");
       }
       return new ResponseEntity<>(contas, HttpStatus.OK);
     } catch (Exception e) {
-      errorMessage.setMessage(e.getMessage());
-      return new ResponseEntity<>(errorMessage.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+      erro.setMessage(e.getMessage());
+      throw new GeneralException(erro.getMessage());
     }
   }
 }

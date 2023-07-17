@@ -31,6 +31,3 @@ INSERT INTO transferencia_tb (data_transferencia, valor, tipo, nome_operador_tra
 INSERT INTO transferencia_tb (data_transferencia, valor, tipo, nome_operador_transacao, conta_id) VALUES ('2019-08-07 08:12:45',-530.50,'SAQUE', null,2);
 INSERT INTO transferencia_tb (data_transferencia, valor, tipo, nome_operador_transacao, conta_id) VALUES ('2020-06-08 10:15:01',3241.23,'TRANSFERENCIA', 'Beltrano',1);
 INSERT INTO transferencia_tb (data_transferencia, valor, tipo, nome_operador_transacao, conta_id) VALUES ('2021-04-01 12:12:04',25173.09,'TRANSFERENCIA', 'Ronnyscley',2);
-
-select * from conta_tb;
-select * from transferencia_tb;
